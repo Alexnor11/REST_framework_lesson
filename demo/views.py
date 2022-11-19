@@ -4,8 +4,8 @@ from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet, ModelViewSet
 
-from .models import Weapon, Comment
-from .serializers import WeaponSerializer, CommentSerializer
+from .models import Weapon, Comment, Adv
+from .serializers import WeaponSerializer, CommentSerializer, AdvSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -46,3 +46,8 @@ class CommentViewSet(ModelViewSet):
     ordering_fields = ['id', 'user', 'text', 'created_at']  # Упорядочивание данных * сокращение о
     # Пагинация для конкретного вьюсета
     pagination_class = LimitOffsetPagination  # Limit например 2 c offset 5 (показать 2 с 5)
+
+
+class AdvViewSet(ModelViewSet):
+    queryset = Adv.objects.all()
+    serializer_class = AdvSerializer

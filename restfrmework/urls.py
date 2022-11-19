@@ -2,10 +2,12 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from demo.views import DemoView, WeaponView, CommentViewSet
+from demo.views import DemoView, WeaponView, CommentViewSet, AdvViewSet
 
 r = DefaultRouter()
+r.register('adv', AdvViewSet)
 r.register('comments', CommentViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
