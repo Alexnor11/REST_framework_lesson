@@ -6,19 +6,24 @@ POST http://localhost:8000/demo/
 
 ###
 
-GET http://localhost:8000/weapon/3/
+GET http://localhost:8000/weapon/2/
 
 ###
 
 GET http://localhost:8000/comments/
 
 ###
-GET http://localhost:8000/adv/
+GET http://localhost:8000/adv/?page=1
 
 ###
 POST http://localhost:8000/adv/
 Content-Type: application/json
 Authorization: Token ec70951f53b04b1a2ea9b3f15cf7623e4d8d4d85
-{    
-    "text": "Объявление",
+
+{
+    "text": "Проверка REST Client"
 }
+
+###
+DELETE http://localhost:8000/adv/2/
+Authorization: Token ec70951f53b04b1a2ea9b3f15cf7623e4d8d4d85

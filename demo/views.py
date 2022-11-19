@@ -11,6 +11,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import LimitOffsetPagination
 
+from .permissions import IsOwnerOrReadOnly
+
 
 # Create your views here.
 # @api_view(['GET', 'POST'])
@@ -51,3 +53,8 @@ class CommentViewSet(ModelViewSet):
 class AdvViewSet(ModelViewSet):
     queryset = Adv.objects.all()
     serializer_class = AdvSerializer
+    # Создаем свой permissions
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
