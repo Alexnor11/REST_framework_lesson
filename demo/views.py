@@ -12,6 +12,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import LimitOffsetPagination
 
 from .permissions import IsOwnerOrReadOnly
+from rest_framework.throttling import AnonRateThrottle
 
 
 # Create your views here.
@@ -55,6 +56,7 @@ class AdvViewSet(ModelViewSet):
     serializer_class = AdvSerializer
     # Создаем свой permissions
     permission_classes = [IsOwnerOrReadOnly]
+    throttle_classes = [AnonRateThrottle]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
