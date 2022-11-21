@@ -16,6 +16,10 @@ GET http://localhost:8000/comments/
 GET http://localhost:8000/adv/?page=1
 
 ###
+GET http://localhost:8000/adv/?page=1
+Authorization: Token ec70951f53b04b1a2ea9b3f15cf7623e4d8d4d85
+
+###
 GET http://localhost:8000/adv/3/
 
 ###

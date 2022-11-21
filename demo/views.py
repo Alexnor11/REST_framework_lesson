@@ -41,6 +41,7 @@ class WeaponView(RetrieveAPIView):
 class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    throttle_classes = [AnonRateThrottle]
 
     # Фильтрация данных - 3 типа фильтров
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
